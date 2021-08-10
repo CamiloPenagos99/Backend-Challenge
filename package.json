@@ -1,0 +1,16 @@
+{
+  "name": "api-challenge",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index",
+    "start": "node index"
+  },
+  "keywords": [],
+  "author": "camilo penagos",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
