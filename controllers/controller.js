@@ -45,11 +45,10 @@ const controller = {
         const matriz = req.body.matriz;
         const array = [matriz[0].dim1.split(','),matriz[1].dim2.split(',')];
         const orden= req.body.orden;
-        //console.log("orden:", orden);
-        //console.log(array);
+        
         const result = challenge.TransformArray(array,orden);
         const jsonRes=JSON.stringify(result);
-        console.log(result);
+        
         res.json({
             estado: "ok",
             result
@@ -93,16 +92,9 @@ const controller = {
        if(id=="" || !id || id.length!=11){
         res.json({      
             isError: true,      
-            status: "develop",
-            er: "Metodo para buscar por la etiqueta, en implementación"
+            status: "failed",
+            er: "Ingrese un codigo de 11 digitos valido"
         })
-
-        if(id.length==17){
-            res.json({      
-                isError: false,      
-                status: "failed",
-                er: "Ingrese un codigo de 11 digitos valido"
-            })
        } 
         //funciones auxiliares de busqueda y formato
         const format = (json,id,track) =>{

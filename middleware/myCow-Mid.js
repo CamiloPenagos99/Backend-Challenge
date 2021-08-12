@@ -15,7 +15,7 @@ const verificar = (req,res,next)=>{
     if(reqmatriz[0]['dia1'].length>50 || reqmatriz[0]['dia1'].length<3){ 
         return  res.status(400).json({
         error: true,
-        msg: "La variable N(cantidad de vacas), debe ser menor 3 y mayor de 50"
+        msg: "La variable N(cantidad de vacas), debe ser mayor 3 y menor de 50"
     })
 }
         
