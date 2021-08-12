@@ -28,6 +28,7 @@ const controller = {
 
     //tercer ejercicio
     sumArray: (req, res)=>{
+        console.log(req.body);
         const requestArray=req.body.array;
         //const stringArray=requestArray.split(',');
         const array=requestArray.map(num => parseInt(num));
@@ -90,10 +91,12 @@ const controller = {
         const API_TRACKING = 'https://api.coordinadora.com/cm-model-testing/api/v1/talentos/checkpoint';
         let id = req.params.codigo;
        if(id=="" || !id || id.length!=11){
+           let msg = "Ingrese un codigo de 11 digitos valido"
+           if(id.length==15) msg = "Metodo para buscar por ETIQUETA, aun no implementado"
         res.json({      
             isError: true,      
             status: "failed",
-            er: "Ingrese un codigo de 11 digitos valido"
+            er: msg
         })
        } 
         //funciones auxiliares de busqueda y formato
