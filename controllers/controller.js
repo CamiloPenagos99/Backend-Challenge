@@ -6,16 +6,15 @@ const controller = {
 
     //Primer ejercicio
     average: async (req, res)=>{
-
         const num1= parseInt(req.query.num1);
         const num2= parseInt(req.query.num2);
         const ret =  await challenge.average(num1,num2); //await de la promesa de average
         res.json({
             estado: "ok",
-            msg: "Primer controlador funcionando",
-            challenge: ret
+            //msg: "Primer controlador funcionando",
+            result: ret
         })
-        },
+    },
     
     //segundo ejercicio
     stringManipulation: (req, res)=>{
@@ -23,8 +22,7 @@ const controller = {
         const ret = challenge.stringManipulation(word);
         res.json({
             estado: "ok",
-            msg: "segundo controlador funcionando",
-            challenge: ret
+            result: ret
         })
     },
 
@@ -47,11 +45,11 @@ const controller = {
         const matriz = req.body.matriz;
         const array = [matriz[0].dim1.split(','),matriz[1].dim2.split(',')];
         const orden= req.body.orden;
-        console.log("orden:", orden);
+        //console.log("orden:", orden);
         //console.log(array);
         const result = challenge.TransformArray(array,orden);
         const jsonRes=JSON.stringify(result);
-        console.log(array);
+        console.log(result);
         res.json({
             estado: "ok",
             result
@@ -92,7 +90,13 @@ const controller = {
         const API_GUIAS = 'https://api.coordinadora.com/cm-model-testing/api/v1/talentos';
         const API_TRACKING = 'https://api.coordinadora.com/cm-model-testing/api/v1/talentos/checkpoint';
         let id = req.params.codigo;
-        
+       if(id=="" || !id || id.length!=11){
+        res.json({      
+            isError: true,      
+            status: "failed",
+            er: "Ingrese un codigo de 11 digitos valido"
+        })
+       } 
         //funciones auxiliares de busqueda y formato
         const format = (json,id,track) =>{
           return challenge.TrackingCoordinadora(json.guias,id,track); 
@@ -116,15 +120,17 @@ const controller = {
               const payload = format(guias,id,dataTrack); //iniciar busqueda de codigo_remision Total
 
               //enviar formato al client
-              res.json({      
-                estado: "ok",
+              res.json({
+                isError: false,      
+                status: "succes",
                 payload
             })
 
             }catch(er){
                 console.log(er);
                 res.json({      
-                    estado: false,
+                    isError: true,      
+                    status: "failed",
                     er
                 })
             }

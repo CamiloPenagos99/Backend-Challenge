@@ -86,9 +86,14 @@ const challenge = {
             if(!isNaN(matriz[j][i])) newarray.push(parseInt(matriz[j][i]));
                 }
             }
+        
 
-        if(orden=='ASC') return newarray.sort()
-        else if(orden=='DESC') return newarray.sort().reverse();
+        if(orden=='ASC') {
+            newarray.sort();
+            return newarray.sort(); }
+        else if(orden=='DESC') {
+            newarray.sort().reverse()
+            return newarray};
             
     },
 
