@@ -93,9 +93,16 @@ const controller = {
        if(id=="" || !id || id.length!=11){
         res.json({      
             isError: true,      
-            status: "failed",
-            er: "Ingrese un codigo de 11 digitos valido"
+            status: "develop",
+            er: "Metodo para buscar por la etiqueta, en implementación"
         })
+
+        if(id.length==17){
+            res.json({      
+                isError: false,      
+                status: "failed",
+                er: "Ingrese un codigo de 11 digitos valido"
+            })
        } 
         //funciones auxiliares de busqueda y formato
         const format = (json,id,track) =>{
