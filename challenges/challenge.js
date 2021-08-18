@@ -1,11 +1,15 @@
 
 const challenge = {
 
+    //metodo de prueba
+    multi: (a,b)=>{
+        return a*b;
+    },
     //Primer ejercicio
     average: async(a, b)=>{
         try {
         const response = (a+b)/2;
-        console.log("average:", response);
+       // console.log("average:", response);
         return response;
         } catch (e) {
         throw new TypeError("Ha ocurrido un error con este reto");

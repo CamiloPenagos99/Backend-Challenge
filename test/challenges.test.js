@@ -2,9 +2,14 @@
 const challenge = require("../challenges/challenge");
 
 //escribir test
+test ('Probar metodo de prueba', ()=>{
+   const result = challenge.multi(2,10);
+   expect(result).toBe(20);
+  });   
+
 
 test ('Probar primer metodo (promedio) del reto', ()=>{
-    const result = challenge.average(10,30);
-
-    expect(result).toBe(20);
+      return challenge.average(20,30).then(result =>{
+        expect(result).toBe(25);
+    });   
 })
